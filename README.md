@@ -51,7 +51,7 @@ Participants must bring their own laptop. Prior to the start of the workshop ple
 | ---------------- | -------------------------- |
 | 9:30a - 11:00a | Transforming data: mutate, case_when, if_else, bind, long/wide |
 | 11:00a - 11:10a | *Break* |
-| 11:10a - 12:30p | Writing functions and visualizing data: ggplot2 |
+| 11:10a - 12:30p | Writing functions and visualizing data |
 | 12:30p - 1:30p | *Lunch* |
 | 1:30p - 2:50p | Transforming data: joins, group, select, summarize |
 | 2:50p - 3:00p | *Break* |
