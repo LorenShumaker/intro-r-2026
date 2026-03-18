@@ -54,11 +54,11 @@ git clone git@github.com:LorenShumaker/intro-r-2026.git
 * push the commited changes to the fork\
 `git push -u origin main`
 
-\
+#
 
 ***
 
-\
+#
 
 # RStudio
 
