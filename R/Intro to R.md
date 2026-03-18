@@ -41,13 +41,13 @@ git clone git@github.com:LorenShumaker/intro-r-2026.git
 ### commiting changes
 
 * first, make your changes and save the file...
-* see difference between saved file
+* see difference between saved file\
 `git diff`
-* load the changes into the commit
+* load the changes into the commit\
 `git add .`
-* commit the file and say what you changed (you MUST say what you changed)
+* commit the file and say what you changed (you MUST say what you changed)\
 `git commit -m "say what's different"`
-* push the commited changes to the fork
+* push the commited changes to the fork\
 `git push -u origin main`
 
 ***
