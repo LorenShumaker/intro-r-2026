@@ -1,5 +1,7 @@
 # Intro to R 
 
+==hey this is is a comment==
+
 Instructors: Tammy Lee, Lindsey Smith, Iris Rademacher  
 Location: Engineering Building, Room 310, 1930 SW 4th Avenue, Portland, Oregon 97201  
 Dates: 3/18 - 3/20, 9:30am - 4:30pm   
