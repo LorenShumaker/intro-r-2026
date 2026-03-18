@@ -54,7 +54,11 @@ git clone git@github.com:LorenShumaker/intro-r-2026.git
 * push the commited changes to the fork\
 `git push -u origin main`
 
+
+
 ***
+
+
 
 # RStudio
 
@@ -92,15 +96,16 @@ git clone git@github.com:LorenShumaker/intro-r-2026.git
 ### R Functions
 
 * Functions can be recognizable when they are followed by parentheses
-* To learn more about a function you can type `? typeof()` in the RStudio Console
-* `typeof()`: get the data type of whatever is in the parentheses
+* To learn more about a function like `typeof()` you can type `? typeof()` in the RStudio Console
+* `typeof()`: get the data type of whatever is in the parentheses:\
 `typeof(8.5)`
+* `getwd()` enter into the RStudio Console to see where you are in the folder structure
 
 
-### R Functions
+### R Packages
 
-* Two question marks followed by a package name in the RStudio Console will get a help page for a specific package like `?? rio`
-* some common packages (provided in the training resources):
+* To learn more about a package like `rio` you can type  `?? rio` in the RStudio Console
+* some common packages (provided in the training resources):\
 `
 pkgs <- c(
   "rio",        # import/export by file extension
