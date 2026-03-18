@@ -55,9 +55,9 @@ git clone git@github.com:LorenShumaker/intro-r-2026.git
 `git push -u origin main`
 
 \
-\
+
 ***
-\
+
 \
 
 # RStudio
