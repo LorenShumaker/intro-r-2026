@@ -91,8 +91,26 @@ git clone git@github.com:LorenShumaker/intro-r-2026.git
 
 ### R Functions
 
-* get the data type of whatever is in the parentheses
+* Functions can be recognizable when they are followed by parentheses
+* To learn more about a function you can type `? typeof()` in the RStudio Console
+* `typeof()`: get the data type of whatever is in the parentheses
 `typeof(8.5)`
+
+
+### R Functions
+
+* Two question marks followed by a package name in the RStudio Console will get a help page for a specific package like `?? rio`
+* some common packages (provided in the training resources):
+`
+pkgs <- c(
+  "rio",        # import/export by file extension
+  "tidyverse",  # dplyr, tidyr, ggplot2, readr, etc.
+  "lubridate",  # date-time parsing
+  "stringr",    # string utilities
+  "janitor",    # clean_names(), tabyl(), etc.
+  "scales",     # percent_format and friends
+  "tidycensus"  # ACS API wrapper (optional bonus section)
+)`
 
 
 
