@@ -80,9 +80,9 @@ git clone git@github.com:LorenShumaker/intro-r-2026.git
 
 * Command + Option + i inserts new code chunk that looks like this:
 ````
-\```{r}
+```{r}
 
-\```
+```
 ````
 
 * Notes can go outside of that chunk, or # can start a note
