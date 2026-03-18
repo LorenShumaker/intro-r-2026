@@ -1,0 +1,24 @@
+---
+title: "R Training"
+author: "Loren"
+date: 2026-03-18
+format: html
+editor: visual
+---
+
+Note outside of code chunk
+
+```{r}
+# note inside of code chunk
+
+9
+9
+6
+typeof(8.5)
+
+```
+```{r}
+
+typeof("8.5")
+```
+
