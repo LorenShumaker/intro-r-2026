@@ -57,10 +57,10 @@ git clone git@github.com:LorenShumaker/intro-r-2026.git
 
 ### File Types
 
-* .md 		markdown
-* .rmd 		R markdown
-* .qmd 		R markdown that allows you to show some code (rmd files can be switched to qmd files, they can also be switched to python)
-* .r 		standard R file
+* `.md` markdown
+* `.rmd` R markdown
+* `.qmd` R markdown that allows you to show some code (rmd files can be switched to qmd files, they can also be switched to python)
+* `.r` standard R file
 
 
 ### General Notes
