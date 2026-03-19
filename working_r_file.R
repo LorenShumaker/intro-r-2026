@@ -25,3 +25,11 @@ table(raw_15min$occupancy)
 
 
 dfSummary(raw_15min)
+
+
+raw_15min[2, ]
+raw_15min[ , 2]
+raw_15min[2, 3]
+
+mean(raw_15min$speed)
+hist(raw_15min$occupancy)

@@ -4,9 +4,9 @@
 
 
 
-### Entering Directory
+### Entering Directory in Terminal
 
-* 
+* cd path/name/for/directory
 
 
 
@@ -111,7 +111,7 @@ git clone git@github.com:LorenShumaker/intro-r-2026.git
 `typeof(8.5)`
 * `getwd()` enter into the RStudio Console to see where you are in the folder structure
 
-##### Exploring Data Functions
+##### Functions for Exploring Data
 
 * Structure of data
 `str()`
@@ -124,7 +124,15 @@ git clone git@github.com:LorenShumaker/intro-r-2026.git
 * Provide a transposed, compact summary of a data frame or tibble
 `glimpse()`
 * Create a frequency table of values
-`table(table(data-frame0name$column-name))`
+`table(table(data-frame-name$column-name))`
+* Get the mean of a column
+`mean(data-frame-name$column-name)`
+* Get a histogram for a column
+`hist(data-frame-name$column-name)`
+* Index for data-frames of a row, column, or cell (not a function but also useful):
+`data-frame-name[2, ]
+data-frame-name[ , 2]
+data-frame-name[2, 3]`
 
 
 ### R Packages
@@ -144,8 +152,8 @@ pkgs <- c(
 
 
 * You can also install cran verified packages by going to the Packages pane in RStudio and clicking "Install" then searching for the name of a package
-* Other valuable packages
-	* `summarytools` Provides more detailed tools for sumarizing, after installed and loaded use the function `dfSummary()`
+##### Other valuable packages
+* `summarytools` Provides more detailed tools for sumarizing, after installed and loaded use the function `dfSummary()`
 
 
 
