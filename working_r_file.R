@@ -45,3 +45,7 @@ occ_10plus_sp80 <- raw_15min |>
   filter(occupancy < 20 & speed > 80)
 table(occ_10plus_sp80$detector_id)
 
+
+# working with NA's
+blank_example <- raw_15min ~>
+  filter(is.na(speed))

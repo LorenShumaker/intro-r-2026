@@ -71,13 +71,14 @@
 -   `.rmd` R markdown
 -   `.qmd` R markdown that allows you to show some code (rmd files can be switched to qmd files, they can also be switched to python)
 -   `.r` standard R file
+-   `.rds` compressed R file with retained formatting
 
 ### General Notes
 
 -   R Studio cheat sheets:
     -   In RStudio go to Help \> Cheat Sheets \> whichever one you want or "Browse Cheat Sheets"
 -   quarto options
-    -   https://quarto-tdg.org/yaml
+    -   <https://quarto-tdg.org/yaml>
 -   R is case sensitive
 
 ### Coding in R
@@ -124,7 +125,7 @@
     `glimpse()`
 -   Create a frequency table of values\
     `table(table(data-frame-name$column-name))`
--   Get the mean of a column\
+-   Get the mean of a column (see filters below if getting error from NA values)\
     `mean(data-frame-name$column-name)`
 -   Get a histogram for a column\
     `hist(data-frame-name$column-name)`
@@ -143,3 +144,5 @@
 -   filter occupancy column (for example) to less than 10 and speed column (also for example) to greater than 80\
     `new-filtered-object-name <- data-frame-name |`\
     `filter(occupancy < 20 & speed > 80)`
+-   create an object to filter out NAs (which mean or other functions can then be run on)\
+    `new-filtered-object-name``<-``data-frame-name``|> filter(is.na(column-name))`\
