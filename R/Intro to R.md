@@ -161,11 +161,11 @@ pkgs <- c(
 ##### These are dplyr functions, be sure to install and load the package first. See the dplyr cheat sheet for more filtering functions
 
 * filter occupancy column (for example) to greater than 20 \
-`new-filtered-object-name <- data-frame-name |>
-  filter(occupancy > 20)`\
+`new-filtered-object-name <- data-frame-name |>`\
+`  filter(occupancy > 20)`\
 * filter occupancy column (for example) to less than 10  and speed column (also for example) to greater than 80\
-`new-filtered-object-name <- data-frame-name |>
-  filter(occupancy < 20 & speed > 80)`\
+`new-filtered-object-name <- data-frame-name |`\
+`  filter(occupancy < 20 & speed > 80)`\
 
 
 
