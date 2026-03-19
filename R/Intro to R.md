@@ -113,7 +113,7 @@ git clone git@github.com:LorenShumaker/intro-r-2026.git
 
 ##### Functions for Exploring Data
 
-* Structure of data
+* Structure of data\
 `str()`
 * Returns the first rows or elements of a data frame, matrix, table, or vector
 `head()`
@@ -130,9 +130,9 @@ git clone git@github.com:LorenShumaker/intro-r-2026.git
 * Get a histogram for a column
 `hist(data-frame-name$column-name)`
 * Index for data-frames of a row, column, or cell (not a function but also useful):
-`data-frame-name[2, ]
-data-frame-name[ , 2]
-data-frame-name[2, 3]`
+`data-frame-name[2, ]`\
+`data-frame-name[ , 2]`\
+`data-frame-name[2, 3]`
 
 
 ### R Packages
