@@ -71,36 +71,55 @@
 -   `.rmd` R markdown
 -   `.qmd` R markdown that allows you to show some code (rmd files can be switched to qmd files, they can also be switched to python)
 -   `.r` standard R file
+-   `.rds` compressed R file with retained formatting
 
 ### General Notes
 
 -   R Studio cheat sheets:
     -   In RStudio go to Help \> Cheat Sheets \> whichever one you want or "Browse Cheat Sheets"
 -   quarto options
-    -   https://quarto-tdg.org/yaml
+    -   <https://quarto-tdg.org/yaml>
 -   R is case sensitive
 
 ### Coding in R
 
 -   Command + Option + i inserts new code chunk that looks like this:
-
+````
 ```{{r}}
 
 ```
+````
 
 -   Notes can go outside of that chunk, or \# can start a note
 -   R handles data types differently if they are character, logical, vector, or numerical
+-   Commenting out toggle **`⌘ + Shift + C`** (on PC **`Ctrl + Shift + C`**)
 
 ### R Packages
 
 -   To learn more about a package like `rio` you can type `?? rio` in the RStudio Console
+-   some common packages (provided in the training resources):
 
--   some common packages (provided in the training resources):\
-    `pkgs <- c(   "rio",        # import/export by file extension   "tidyverse",  # dplyr, tidyr, ggplot2, readr, etc.   "lubridate",  # date-time parsing   "stringr",    # string utilities   "janitor",    # clean_names(), tabyl(), etc.   "scales",     # percent_format and friends   "tidycensus"  # ACS API wrapper (optional bonus section) )`
+```         
+pkgs <- c(
+  "rio",        # import/export by file extension
+  "tidyverse",  # dplyr, tidyr, ggplot2, readr, etc.
+  "lubridate",  # date-time parsing
+  "stringr",    # string utilities
+  "janitor",    # clean_names(), tabyl(), etc.
+  "scales",     # percent_format and friends
+  "tidycensus"  # ACS API wrapper (optional bonus section)
+)
+```
 
 -   You can also install cran verified packages by going to the Packages pane in RStudio and clicking "Install" then searching for the name of a package \##### Other valuable packages
 
 -   `summarytools` Provides more detailed tools for sumarizing, after installed and loaded use the function `dfSummary()`
+
+### Importing Dat
+
+-   Be sure to prevent characters from being imported as factors with `### R Functions`\
+`raw_stations <- read.csv("data/raw/stations.csv"), stringsAsFactors = F)`
+
 
 ### R Functions
 
@@ -109,6 +128,7 @@
 -   `typeof()`: get the data type of whatever is passed in the parentheses:\
     `typeof(8.5)`
 -   `getwd()` enter into the RStudio Console to see where you are in the folder structure
+-   `clean_names()` standardizes and tidies the column names of a data frame
 
 ##### Functions for Exploring Data
 
@@ -124,14 +144,12 @@
     `glimpse()`
 -   Create a frequency table of values\
     `table(table(data-frame-name$column-name))`
--   Get the mean of a column\
+-   Get the mean of a column (see filters below if getting error from NA values)\
     `mean(data-frame-name$column-name)`
 -   Get a histogram for a column\
     `hist(data-frame-name$column-name)`
 -   Index for data-frames of a row, column, or cell (not a function but also useful):\
-    `data-frame-name[2, ]`\
-    `data-frame-name[ , 2]`\
-    `data-frame-name[2, 3]`
+    `data-frame-name[2, ]     data-frame-name[ , 2]     data-frame-name[2, 3]`
 
 ### R Filters
 
@@ -143,3 +161,48 @@
 -   filter occupancy column (for example) to less than 10 and speed column (also for example) to greater than 80\
     `new-filtered-object-name <- data-frame-name |`\
     `filter(occupancy < 20 & speed > 80)`
+-   create an object to filter out NAs (which mean or other functions can then be run on)\
+    `new-filtered-object-name <- data-frame-name |>`\
+    `filter(is.na(column-name))`
+
+### Plotting
+
+-   ggplot2 is useful for plotting (see package install above)
+
+-   Sample plot:
+
+    ```         
+        speed_vol_fig <- clean_df |>
+        filter(detector_id < 101100) |>
+        filter(speed > 40) |>
+        ggplot(aes(x = speed, y = volume, color = as.factor(detector_id))) +
+        geom_point()
+
+    speed_vol_fig
+    ```
+
+-   plotly is useful for being able to hover over elements on a plot (also needs to be installed)
+
+-   Sample plot using plotly to all:\
+    `det_speed_figly <- ggplotly(speed_occ_fig)     det_speed_figly`
+
+### Custom Functions
+
+```
+
+figure_function <- function(){
+  
+}
+
+```
+
+example (put the flexible aspects in te function parentheses on the first line, then replace it where you need something to change in the function code, everything the function does is in the curly brackets):
+```
+
+```
+
+### Mapping
+
+- Tigris is a good package to bring in that will allow you to bring in polygons and other mapping parts
+- See section5_mapping.R file for examples of mapping with popup styling
+

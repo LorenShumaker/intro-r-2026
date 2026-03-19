@@ -8,11 +8,14 @@ pkgs <- c(
   "stringr",    # string utilities
   "janitor",    # clean_names(), tabyl(), etc.
   "scales",     # percent_format and friends
-  "tidycensus"  # ACS API wrapper (optional bonus section)
+  "tidycensus",  # ACS API wrapper (optional bonus section)
+  "summarytools",
+  "textclean"
 )
 
 need <- pkgs[!pkgs %in% rownames(installed.packages())]
 if (length(need)) install.packages(need)
 
 invisible(lapply(pkgs, library, character.only = TRUE))
+
 

@@ -6,18 +6,11 @@ format: html
 editor: visual
 ---
 
-
-
-
 ```{r}
 #| label: setup
 source("training_source.R")
 
 ```
-
-
-
-
 
 Note outside of code chunk
 
@@ -30,6 +23,7 @@ Note outside of code chunk
 typeof(8.5)
 
 ```
+
 ```{r}
 
 typeof("8.5")
@@ -51,13 +45,148 @@ df
 str(df)
 ```
 
-
-
-
 ```{r}
 csv_path <- "../data/raw/presurvey_20260317.csv"
 survey_raw <- rio::import(csv_path)
 ```
 
+### Clean Names
 
+```{r}
+survey_raw |>
+  glimpse()
+
+survey <- survey_raw |>
+  clean_names() |>
+  rename(os = what_operating_system_are_you_using_for_this_workshop,
+         prior_exp = which_of_the_following_are_true_regarding_your_experiences_with_r_prior_to_this_workshop,
+         r_hope = what_do_you_hope_to_use_r_for_in_the_future,
+         trevel_mode = the_workshop_will_be_held_on_the_psu_campus_what_is_your_intended_mode_of_travel_to_the_workshop_check_all_that_apply,
+         travel_direct = do_you_intend_to_travel_directly_from_home_to_the_workshop,
+         distance = how_far_will_you_likely_travel,
+         commute_time = what_is_the_approximate_travel_time_for_your_morning_commute_to_psu,
+         drink = what_is_your_morning_drink_of_choice,
+         movie_quote = what_is_the_first_movie_quote_that_comes_to_mind,
+         pinepple_ok = pineapple_is_an_acceptable_pizza_topping)
+
+glimpse(survey)
+```
+
+### Mutate Statements with If Else and Case When
+
+```{r}
+
+# establish linux possible names for future renaming
+linux <- c("linux", "ubunt", "debian", "fedora", "arch")
+
+survey2 <- survey |>
+  mutate(
+    # extract only commute times with numbers
+    commute_digits = str_extract(commute_time, "[0-9]+"),
+    # extract only distances with numbers
+    distance_digits = str_extract(distance, "[0-9]|\\.+"),
+    # convert commute to minutes
+    commute_min = as.numeric(commute_digits),
+    # convert distance to miles
+    distance_mi = as.numeric(distance_digits),
+    # convert commute to minutes
+    travel_mph = if_else(!is.na(commute_min) & commute_min > 0,
+                         distance_mi / commute_min * 60, NA_real_),
+    # convert OS names to all be lower case (for search on next line)
+    os = str_to_lower(os),
+    # convert OS names to be consistent
+    os_family = case_when (
+      # replace names that contain win
+      str_detect(os, "win") ~ "Windows",
+      # replace names that contain mac
+      str_detect(os, "mac|apple") ~ "Mac",
+      # replace linux names from list above
+      str_detect(os, paste(linux, collapse = "|")) ~ "Linux",
+      # essentially the "else" for case when
+      TRUE ~ "Other"
+      )
+  )
+
+glimpse(survey2)
+
+survey3 <- survey2 |>
+  select(os, os_family, distance_mi, commute_min, travel_mph)
+
+glimpse(survey3)
+
+```
+
+### Long / Wide
+
+```{r}
+
+long_survey <- survey2 |>
+  select(distance, commute_time) |>
+  pivot_longer(
+    cols = c(distance, commute_time),
+    names_to = "num_text_var",
+    values_to = "numeric_text"
+    ) |>
+  mutate(numeric_text = str_to_lower(numeric_text),
+         .rid = row_number())
+
+wide_survey <- long_survey |>
+  pivot_wider(
+    id_cols = .rid,
+    names_from = num_text_var,
+    values_from = numeric_text,
+    names_repair = "minimal"
+    ) |>
+  select(-.rid)
+
+glimpse(long_survey)
+
+glimpse(wide_survey)
+
+```
+
+
+
+### Day 3: (requires above to be run)
+
+```{r}
+num_dict_words <- paste(textclean::replace_number(seq_len(100)), collapse = "|")
+
+text_num_tbl <- tibble(num = seq_len(100)) |>
+  mutate(
+    word = textclean::replace_number(num),
+    word_num = as.character(num)
+  ) |>
+  select(word, word_num)
+
+long_survey <- survey2 |>
+  select(distance, commute_time) |>
+  mutate(rid = row_number()) |>
+  pivot_longer(
+    cols = c(distance, commute_time),
+    names_to = "num_text_var",
+    values_to = "numeric_text"
+    ) |>
+  mutate(numeric_text = str_to_lower(numeric_text)) |>
+  filter(nchar(numeric_text)>2) |>
+  mutate(
+    num_words = str_extract_all(numeric_text, num_dict_words, simplify = T),
+    num_words = case_when(
+      nchar(num_words[,1])<2 ~ NA_character_,
+      nchar(num_words[,2])>2 ~ 
+        paste(num_words[,1], num_words[,2], sep = "-"),
+      TRUE ~ num_words[,1]
+    )
+  ) |>
+  left_join(select(text_num_tbl, word, word_num), by = c("num_words" = "word")) |>
+  mutate(
+    num_raw = case_when(
+      !is.na(word_num) ~ word_num,
+      str_detect(numeric_text, "\\ban\\b") ~ "1",
+      TRUE ~ numeric_text
+      ),
+    num = parse_number(num_raw)
+    )
+
+```
 
