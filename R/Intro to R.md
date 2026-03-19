@@ -114,22 +114,22 @@ git clone git@github.com:LorenShumaker/intro-r-2026.git
 ##### Functions for Exploring Data
 
 * Structure of data\
-`str()`
-* Returns the first rows or elements of a data frame, matrix, table, or vector
-`head()`
-* Returns the last six elements (for vectors) or last six rows (for data frames/matrices)
-`tail()`
-* Produce "result summaries" of various model-fitting functions, data frames, or vectors
-`summary()`
-* Provide a transposed, compact summary of a data frame or tibble
-`glimpse()`
-* Create a frequency table of values
-`table(table(data-frame-name$column-name))`
-* Get the mean of a column
-`mean(data-frame-name$column-name)`
-* Get a histogram for a column
-`hist(data-frame-name$column-name)`
-* Index for data-frames of a row, column, or cell (not a function but also useful):
+`str()`\
+* Returns the first rows or elements of a data frame, matrix, table, or vector\
+`head()`\
+* Returns the last six elements (for vectors) or last six rows (for data frames/matrices)\
+`tail()`\
+* Produce "result summaries" of various model-fitting functions, data frames, or vectors\
+`summary()`\
+* Provide a transposed, compact summary of a data frame or tibble\
+`glimpse()`\
+* Create a frequency table of values\
+`table(table(data-frame-name$column-name))`\
+* Get the mean of a column\
+`mean(data-frame-name$column-name)`\
+* Get a histogram for a column\
+`hist(data-frame-name$column-name)`\
+* Index for data-frames of a row, column, or cell (not a function but also useful):\
 `data-frame-name[2, ]`\
 `data-frame-name[ , 2]`\
 `data-frame-name[2, 3]`
