@@ -53,6 +53,8 @@ git clone git@github.com:LorenShumaker/intro-r-2026.git
 ### Commiting Changes from Local to Git
 
 * first, make your changes and save the file...
+* see if there are modified files to update\
+`git status`
 * see difference between saved file\
 `git diff`
 * load the changes into the commit\
@@ -109,6 +111,21 @@ git clone git@github.com:LorenShumaker/intro-r-2026.git
 `typeof(8.5)`
 * `getwd()` enter into the RStudio Console to see where you are in the folder structure
 
+##### Exploring Data Functions
+
+* Structure of data
+`str()`
+* Returns the first rows or elements of a data frame, matrix, table, or vector
+`head()`
+* Returns the last six elements (for vectors) or last six rows (for data frames/matrices)
+`tail()`
+* Produce "result summaries" of various model-fitting functions, data frames, or vectors
+`summary()`
+* Provide a transposed, compact summary of a data frame or tibble
+`glimpse()`
+* Create a frequency table of values
+`table(table(data-frame0name$column-name))`
+
 
 ### R Packages
 
@@ -126,7 +143,9 @@ pkgs <- c(
 )`
 
 
-
+* You can also install cran verified packages by going to the Packages pane in RStudio and clicking "Install" then searching for the name of a package
+* Other valuable packages
+	* `summarytools` Provides more detailed tools for sumarizing, after installed and loaded use the function `dfSummary()`
 
 
 
