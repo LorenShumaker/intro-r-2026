@@ -108,6 +108,9 @@ pkgs <- c(
   "janitor",    # clean_names(), tabyl(), etc.
   "scales",     # percent_format and friends
   "tidycensus"  # ACS API wrapper (optional bonus section)
+  "strex"       # Makes a lot of string searching easier than using regex
+  "tidytext"    # More text management
+  "pdftools"    # Package to import PDFs
 )
 ```
 
